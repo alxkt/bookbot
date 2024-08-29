@@ -1,9 +1,9 @@
 def main():
   path_to_book = "books/frankenstein.txt"
   text = get_book_text(path_to_book)
-  test_string = "This is shorter so that this is not crazy. Easier to test!"
   letters = letter_frequency(text)
-  letter_report(letters)
+  sorted_letters = sorted_letter_counts(letters)
+  letter_report(sorted_letters)
   return
 
 def get_book_text(path):
@@ -29,12 +29,16 @@ def letter_frequency(string):
 def sort_on(dict):
   return dict["number"]
 
-def letter_report(letters):
+def sorted_letter_counts(letter_dict):
   sorted_list = []
-  for letter in letters:
-    sorted_list.append({"name": letter, "number": letters[letter]})
+  for letter in letter_dict:
+    sorted_list.append({"name": letter, "number": letter_dict[letter]})
   sorted_list.sort(reverse=True, key=sort_on)
-  for letter in sorted_list:
-    print(f"{letter['name']} appears {letter['number']} times")
+  return sorted_list
+
+
+def letter_report(sorted_list_of_letters):
+    for letter in sorted_list_of_letters:
+      print(f"{letter['name']} appears {letter['number']} times")
 
 main()

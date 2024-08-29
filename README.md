@@ -1,1 +1,1 @@
-BookBot is my first project!
+Little script that reads a file and prints a report for the frequency of letters in the text, sorted from most to least frequent.
