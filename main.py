@@ -5,9 +5,21 @@ def main():
   text = get_book_text(path_to_book)
   letters = letter_frequency(text)
   sorted_letters = sorted_letter_counts(letters)
-  letter_report(sorted_letters)
+  """
+  ============ BOOKBOT ============
+  Analyzing book found at books/frankenstein.txt...
+  ----------- Word Count ----------
+  Found 75767 total words
+  --------- Character Count -------
+  """
   num_words = get_num_words(text)
-  print(f"{num_words} words found in the document")
+
+  print("============ BOOKBOT ============")
+  print(f"Analyzing book found at {path_to_book}...")
+  print("----------- Word Count ----------")
+  print(f"Found {num_words} total words")
+  print("--------- Character Count -------")
+  letter_report(sorted_letters)
   return
 
 def get_book_text(path):
@@ -32,6 +44,6 @@ def sorted_letter_counts(letter_dict):
 
 def letter_report(sorted_list_of_letters):
     for letter in sorted_list_of_letters:
-      print(f"{letter['name']} appears {letter['number']} times")
+      print(f"{letter['name']}: {letter['number']}")
 
 main()
