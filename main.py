@@ -1,17 +1,16 @@
+
+import sys
 from stats import letter_frequency, get_num_words
 
 def main():
-  path_to_book = "books/frankenstein.txt"
+  print(sys.argv)
+  if len(sys.argv) != 2:
+    print("Usage: python3 main.py <path_to_book>")
+    return
+  path_to_book = sys.argv[1]
   text = get_book_text(path_to_book)
   letters = letter_frequency(text)
   sorted_letters = sorted_letter_counts(letters)
-  """
-  ============ BOOKBOT ============
-  Analyzing book found at books/frankenstein.txt...
-  ----------- Word Count ----------
-  Found 75767 total words
-  --------- Character Count -------
-  """
   num_words = get_num_words(text)
 
   print("============ BOOKBOT ============")
@@ -23,7 +22,7 @@ def main():
   return
 
 def get_book_text(path):
-  with open("books/frankenstein.txt") as f:
+  with open(path) as f:
     file_contents = f.read()
   return file_contents
 
