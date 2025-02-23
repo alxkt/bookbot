@@ -1,9 +1,13 @@
+from stats import letter_frequency, get_num_words
+
 def main():
   path_to_book = "books/frankenstein.txt"
   text = get_book_text(path_to_book)
   letters = letter_frequency(text)
   sorted_letters = sorted_letter_counts(letters)
   letter_report(sorted_letters)
+  num_words = get_num_words(text)
+  print(f"{num_words} words found in the document")
   return
 
 def get_book_text(path):
@@ -14,17 +18,6 @@ def get_book_text(path):
 def string_to_words(string):
   words = string.split()
   return words
-
-def letter_frequency(string):
-  letters = {} 
-  lowercase_string = string.lower()
-  for letter in lowercase_string:
-    if letter.isalpha():
-      if letter in letters:
-        letters[letter] += 1
-      else:
-        letters[letter] = 1
-  return letters
 
 def sort_on(dict):
   return dict["number"]
